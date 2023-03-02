@@ -1,0 +1,21 @@
+import random
+def lanca_dado_viciado():
+    # define um número aleatório entre 1 e 4
+    resultado = random.randint(1, 4)
+    
+    # Quando o resultado for 1, 2 ou 3, retornará um número primo aleatório
+    if resultado <= 3:
+        return random.choice([2, 3, 5, 7])
+    
+    # Caso o resultado seja 4, retornará um número não-primo aleatório
+    else:
+        return random.choice([4, 6])
+numero_lancamentos = 1000000
+numero_primos = 0
+
+for i in range(numero_lancamentos):
+    resultado = lanca_dado_viciado()
+    if resultado in [2, 3, 5, 7]:
+        n_primos += 1
+
+print(f"Chance de obter um número primo: {numero_primos/numero_lancamentos:.2f}")
